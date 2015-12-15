@@ -121,8 +121,9 @@
 		});
 		
 		$("#event_btn").click(function() {
+			alert('이벤트 버튼 클릭됨');
 			history.pushState("Event_home","","");
-			$("#box").load();
+		location.href = "${context}/event/boardList/1";
 		});
 		
 		/* 로그인 버튼 */

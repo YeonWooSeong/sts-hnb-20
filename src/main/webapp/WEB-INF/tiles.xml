@@ -3,14 +3,35 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
+
+
+
+<!-- 일반사용자 용. -->
   <definition name="layout" template="/WEB-INF/views/layout.jsp">
     <put-attribute name="header" value="" />
     <put-attribute name="content" value="" />
     <put-attribute name="footer" value="/WEB-INF/views/global/footer.jsp" />
   </definition>
   
+
+<!-- ㅇ관리자 용. -->
+  <definition name="admin_layout" template="/WEB-INF/views/layout.jsp">
+    <put-attribute name="header" value="" />
+    <put-attribute name="content" value="" />
+    <put-attribute name="footer" value="/WEB-INF/views/global/footer.jsp" />
+  </definition>
+  
+
+  
+  
       <definition name ="*/*.tiles" extends="layout">
              <put-attribute name ="header" value= "/WEB-INF/views/global/header.jsp" />
+             <put-attribute name ="content" value= "/WEB-INF/views/{1}/{2}.jsp" />
+      </definition > 
+     
+     <definition name ="admin/*/*.tiles" extends="admin_layout">
+             <put-attribute name ="header" value= "/WEB-INF/views/admin/header.jsp" />
              <put-attribute name ="content" value= "/WEB-INF/views/{1}/{2}.jsp" />
       </definition > 
      

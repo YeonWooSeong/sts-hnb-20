@@ -2,11 +2,13 @@ package com.hnb.member;
 
 import java.io.Serializable;
 
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 @Component
 public class MemberVO implements Serializable{
+
 
 	private String id; // 아이디  =>hong => 'hong'
 	private String password; // 비번
