@@ -2,8 +2,11 @@ package com.hnb.mapper;
 
 import java.util.List;
 
-import com.hnb.member.MemberVO;
+import org.springframework.stereotype.Repository;
 
+import com.hnb.global.Command;
+import com.hnb.member.MemberVO;
+@Repository
 public interface MemberMapper {
 	//CRUD
 	
@@ -11,8 +14,8 @@ public interface MemberMapper {
 	public int insert(MemberVO member);
 	
 	// R : 조회
-	public List<MemberVO> selectAll();
-	public List<MemberVO> selectSomeBy(String column,String keyword); //임의의 값으로 검색
+	public List<MemberVO> selectAll(Command command); //전체조회
+	public List<MemberVO> selectSomeBy(Command command); //임의의 값으로 검색
 	public MemberVO selectOneBy(String id); //아이디로 조회
 	public int count(); //전체회원수 조회
 	public MemberVO login(String id, String pass); //로그인
@@ -22,6 +25,10 @@ public interface MemberMapper {
 	
 	// D : 삭제 (회원탈퇴)
 	public int delete(String id);
+
+	
+	//역시, 전체 회원을 갯수로.
+	public int countByKeyword(Command command);
 	
 	
 	

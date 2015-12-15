@@ -48,7 +48,7 @@ public class AdminController {
 	public Model memberList(Model model){
 		logger.info("AdminController-movieList() 진입");
 		List<MemberVO> list;
-		list = service.getList();
+		list = service.getList(null);
 		model.addAttribute("memberList",list);
 		
 		return model;

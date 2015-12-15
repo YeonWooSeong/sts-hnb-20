@@ -11,6 +11,7 @@
 		<config>src/main/resources/META-INF/mybatis-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/root-context.xml</config>
 		<config>src/main/resources/com/hnb/mapper/AdminMapper.xml</config>
+		<config>src/main/resources/com/hnb/mapper/EventMapper.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/META-INF/mapper-context.xml</config>
