@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hnb.article.ArticleServiceImpl;
+import com.hnb.article.ArticleVO;
 import com.hnb.global.Command;
 import com.hnb.global.CommandFactory;
 import com.hnb.member.MemberServiceImpl;
@@ -24,38 +27,32 @@ public class EventController {
 	
 	@Autowired MemberServiceImpl service;
 	@Autowired MemberVO membervo;
+	@Autowired ArticleVO article;
+	@Autowired ArticleServiceImpl articleService;
 	
 	
 	//RESTful 방식 (url에 {}이 있어서 @pathvariable 사용한 경우)
 	@RequestMapping("/boardList/{pageNo}")
-	public String boardList(
+	public @ResponseBody List<ArticleVO> boardList(
 			@PathVariable("pageNo")String pageNo,
 			Model model){
 logger.info("event 들어감");
 logger.info("넘어온 페이지번호 : {}",pageNo);
-List<MemberVO> list = service.getList(CommandFactory.list(pageNo));
+List<ArticleVO> list = articleService.getList(CommandFactory.list(pageNo));
+
+/*
 model.addAttribute("memberList", list);
-model.addAttribute("count",service.count());
-return "event/boardList.tiles";
+model.addAttribute("count",service.count());*/
+return list;
 		}
+	
+	
+	
 	
 	//SOAP 방식 처리 (URL에 ? 이 있는 경우 즉 , 쿼리스트링을 사용한 경우.)
 	@RequestMapping("/boardList")
-	public String boardList2(
-			@RequestParam(value="pageNo",defaultValue="1")String pageNo,
-			@RequestParam(value="column",required=false)String column,
-			@RequestParam(value="searchKey",required=false)String searchKey,
-			Model model){
-logger.info("event 들어감 2");
-logger.info("넘어온 페이지번호2 : {}",pageNo);
-logger.info("넘어온 컬럼명2 : {}",column);
-logger.info("넘어온 서치키값2 : {}",searchKey);
-Command command = CommandFactory.list(pageNo);
-
-List<MemberVO> list = service.getList(command);
-model.addAttribute("memberList", list);
-int count3 = service.count();
-model.addAttribute("count1",count3);
+	public String goList(){
+		logger.info("goList 넘어감");
 return "event/boardList.tiles";
 		}
 	
@@ -77,7 +74,7 @@ public String memberSearch(
 	logger.info("리스트 결과 : {}",list.size());
 	model.addAttribute("memberList",list);
 	model.addAttribute("pageNo",pageNo);
-	model.addAttribute("count",count);
+	model.addAttribute("count",service.count());
 	
 	return "event/boardSearch.tiles";}
 }
