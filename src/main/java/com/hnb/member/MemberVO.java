@@ -20,12 +20,13 @@ public class MemberVO implements Serializable{
 	private String addr; // 주소
 	private String regdate;
 	private String my_Theater;
+	private String profile;
 	
 	public MemberVO() {
 	}
 	
 	public MemberVO(String id, String password, String name, String birth, 
-			String phone, String email, String gender, String addr, String theater_name, String regdate) {
+			String phone, String email, String gender, String addr, String theater_name, String regdate,String profile) {
 			this.id = id;
 			this.password = password;
 			this.name = name;
@@ -36,6 +37,7 @@ public class MemberVO implements Serializable{
 			this.addr = addr;
 			this.regdate = regdate;
 			this.my_Theater = theater_name;
+			this.profile = profile;
 	}
 	
 	
@@ -103,16 +105,21 @@ public class MemberVO implements Serializable{
 		this.my_Theater = my_Theater;
 	}
 
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	@Override
 	public String toString() {
-		return " 회원 [아이디=" + id 
-				+ ", 비밀번호=" + password 
-				+ ", 이름=" + name 
-				+ ", 생년=" + birth
-				+ ", 핸드폰=" + phone 
-				+ ", 이메일=" + email 
-				+ ", 성별=" + gender 
-				+ ", 주소=" + addr+"]";
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", birth=" + birth + ", phone="
+				+ phone + ", email=" + email + ", gender=" + gender + ", addr=" + addr + ", regdate=" + regdate
+				+ ", my_Theater=" + my_Theater + ", profile=" + profile + "]";
 	}
+
+	
 	
 }

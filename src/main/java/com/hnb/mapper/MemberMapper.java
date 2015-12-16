@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.hnb.article.ArticleVO;
 import com.hnb.global.Command;
 import com.hnb.member.MemberVO;
 @Repository
@@ -29,6 +30,8 @@ public interface MemberMapper {
 	
 	//역시, 전체 회원을 갯수로.
 	public int countByKeyword(Command command);
+
+	public int write(ArticleVO article);
 	
 	
 	
