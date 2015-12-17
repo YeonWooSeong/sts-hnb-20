@@ -14,7 +14,7 @@ import com.hnb.movie.MovieController;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{
-	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 	@Autowired private SqlSession sqlSession;
 	@Override
 	public int write(ArticleVO article) {
