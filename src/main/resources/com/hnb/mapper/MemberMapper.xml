@@ -50,7 +50,6 @@
  REGDATE AS regdate,
  PROFILE AS profile
  FROM MEMBER WHERE ID = #{id}
- 
  </select>
 
 <select  id="count" resultType="int">

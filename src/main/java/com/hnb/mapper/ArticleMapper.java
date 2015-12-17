@@ -13,7 +13,7 @@ import com.hnb.global.Command;
 public interface ArticleMapper {
 
 	
-	
+	// c:  생성
 	public int write(ArticleVO article);
 	
 	// R : 조회

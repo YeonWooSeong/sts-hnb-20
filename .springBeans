@@ -12,10 +12,11 @@
 		<config>src/main/webapp/WEB-INF/spring/appServlet/root-context.xml</config>
 		<config>src/main/resources/com/hnb/mapper/AdminMapper.xml</config>
 		<config>src/main/resources/com/hnb/mapper/EventMapper.xml</config>
+		<config>src/main/resources/com/hnb/mapper/ThemeMapper.xml</config>
+		<config>src/main/resources/META-INF/file-context.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/META-INF/mapper-context.xml</config>
-		<config>src/main/resources/META-INF/fileupload-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
 	</autoconfigs>
 	<configSets>

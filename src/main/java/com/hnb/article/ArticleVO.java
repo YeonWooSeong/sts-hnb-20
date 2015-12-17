@@ -4,107 +4,104 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ArticleVO {
-int rcdNO;  //글 번호
-int GrpNO; // 글 그룹 번호
-String UsrName; //작성자 이름
-String UsrMail; // 작성자 이메일
-String UsrSubject; // 글ㅈ ㅔ목
-String UsrContent;//글 내용
-String UsrPass; // 글 비번
-String UsrFileName; // 업로드 되는 파일 이름
-int UsrFileSize; // 파일 크기
-String UsrDate; // 작성일 
-int UsrRefer;// 글 참조 횟수
-int RcdLevel; // 글 레벨
-int RcdOrder; // 글 그룹에서의 글의 출력 순서
-public int getRcdNO() {
-	return rcdNO;
+int rcdNo;  //글 번호
+int grpNO; // 글 그룹 번호
+String usrName; //작성자 이름
+String usrMail; // 작성자 이메일
+String usrSubject; // 글ㅈ ㅔ목
+String usrContent;//글 내용
+String usrPass; // 글 비번
+String usrFileName; // 업로드 되는 파일 이름
+int usrFileSize; // 파일 크기
+String usrDate; // 작성일 
+int usrRefer;// 글 참조 횟수
+int rcdLevel; // 글 레벨
+int rcdOrder; // 글 그룹에서의 글의 출력 순서
+public int getRcdNo() {
+	return rcdNo;
 }
-public void setRcdNO(int rcdNO) {
-	this.rcdNO = rcdNO;
+public void setRcdNo(int rcdNo) {
+	this.rcdNo = rcdNo;
 }
 public int getGrpNO() {
-	return GrpNO;
+	return grpNO;
 }
 public void setGrpNO(int grpNO) {
-	GrpNO = grpNO;
+	this.grpNO = grpNO;
 }
 public String getUsrName() {
-	return UsrName;
+	return usrName;
 }
 public void setUsrName(String usrName) {
-	UsrName = usrName;
+	this.usrName = usrName;
 }
 public String getUsrMail() {
-	return UsrMail;
+	return usrMail;
 }
 public void setUsrMail(String usrMail) {
-	UsrMail = usrMail;
+	this.usrMail = usrMail;
 }
 public String getUsrSubject() {
-	return UsrSubject;
+	return usrSubject;
 }
 public void setUsrSubject(String usrSubject) {
-	UsrSubject = usrSubject;
+	this.usrSubject = usrSubject;
 }
 public String getUsrContent() {
-	return UsrContent;
+	return usrContent;
 }
 public void setUsrContent(String usrContent) {
-	UsrContent = usrContent;
+	this.usrContent = usrContent;
 }
 public String getUsrPass() {
-	return UsrPass;
+	return usrPass;
 }
 public void setUsrPass(String usrPass) {
-	UsrPass = usrPass;
+	this.usrPass = usrPass;
 }
 public String getUsrFileName() {
-	return UsrFileName;
+	return usrFileName;
 }
 public void setUsrFileName(String usrFileName) {
-	UsrFileName = usrFileName;
+	this.usrFileName = usrFileName;
 }
 public int getUsrFileSize() {
-	return UsrFileSize;
+	return usrFileSize;
 }
 public void setUsrFileSize(int usrFileSize) {
-	UsrFileSize = usrFileSize;
+	this.usrFileSize = usrFileSize;
 }
 public String getUsrDate() {
-	return UsrDate;
+	return usrDate;
 }
 public void setUsrDate(String usrDate) {
-	UsrDate = usrDate;
+	this.usrDate = usrDate;
 }
 public int getUsrRefer() {
-	return UsrRefer;
+	return usrRefer;
 }
 public void setUsrRefer(int usrRefer) {
-	UsrRefer = usrRefer;
+	this.usrRefer = usrRefer;
 }
 public int getRcdLevel() {
-	return RcdLevel;
+	return rcdLevel;
 }
 public void setRcdLevel(int rcdLevel) {
-	RcdLevel = rcdLevel;
+	this.rcdLevel = rcdLevel;
 }
 public int getRcdOrder() {
-	return RcdOrder;
+	return rcdOrder;
 }
 public void setRcdOrder(int rcdOrder) {
-	RcdOrder = rcdOrder;
+	this.rcdOrder = rcdOrder;
 }
 @Override
 public String toString() {
-	return "ArticleVO [rcdNO=" + rcdNO + ", GrpNO=" + GrpNO + ", UsrName=" + UsrName + ", UsrMail=" + UsrMail
-			+ ", UsrSubject=" + UsrSubject + ", UsrContent=" + UsrContent + ", UsrPass=" + UsrPass + ", UsrFileName="
-			+ UsrFileName + ", UsrFileSize=" + UsrFileSize + ", UsrDate=" + UsrDate + ", UsrRefer=" + UsrRefer
-			+ ", RcdLevel=" + RcdLevel + ", RcdOrder=" + RcdOrder + "]";
+	return "ArticleVO [rcdNo=" + rcdNo + ", grpNO=" + grpNO + ", usrName=" + usrName + ", usrMail=" + usrMail
+			+ ", usrSubject=" + usrSubject + ", usrContent=" + usrContent + ", usrPass=" + usrPass + ", usrFileName="
+			+ usrFileName + ", usrFileSize=" + usrFileSize + ", usrDate=" + usrDate + ", usrRefer=" + usrRefer
+			+ ", rcdLevel=" + rcdLevel + ", rcdOrder=" + rcdOrder + "]";
 }
-
-
-
 
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,26 +91,23 @@ public class MemberController {
 		status.setComplete();
 		return "redirect:/";
 	}
-	@RequestMapping("/login")
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public @ResponseBody MemberVO login(
-			String id,
-			@RequestParam("pw")String password,
+			@RequestBody MemberVO param,
 			Model model
 			){
 		logger.info("멤버컨트롤러 login() - 진입");
-		logger.info("유저아이디 : {}",id);
-		logger.info("유저 비밀번호: {}",password);
-		member = service.login(id, password);
+		logger.info("유저아이디 : {}",param.getId());
+		logger.info("유저 비밀번호: {}",param.getPassword());
+		member = service.login(param.getId(), param.getPassword());
 		model.addAttribute("user",member);
-		if (member.getId().equals(id)) {
+		String u = member.getId();
+		logger.info("로그인 과저에서 체크하는 아이디 : {}",u);
+		if (member.getId().equals(param.getId())) {
 			logger.info("로그인성공");
 		} else {
 			logger.info("로그인실패");
-			if (id.equals("choa")) {
-				model.addAttribute("admin", "yes");
-			} else {
-				model.addAttribute("admin", "no");
-			}
+			
 		}
 		return member;
 	}

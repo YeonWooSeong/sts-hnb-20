@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.hnb.mapper.ThemeMapper">
+     <insert id="add" parameterType="com.hnb.theme.ThemeVO">
+  INSERT INTO THEME (THEMENO,THEMENAME)
+  VALUES(
+  #{themeNo}
+  #{themeName}
+  )
+     </insert>
+ 
+ 
+     <update id="change" parameterType="com.hnb.theme.ThemeVO">
+  UPDATE THEME SET THEMENAME = #{themeName} WHERE THEMENO = #{themeNo}
+     </update>
+     
+     
+      <delete id="remove" parameterType="com.hnb.theme.ThemeVO">
+     DELETE FROM THEME WHERE THEMENO = #{themeNo}
+     </delete>
+     
+     
+      <select id="searchByName" resultType="com.hnb.theme.ThemeVO">
+     SELECT  
+     THEMENO AS themeNo,
+     THEMENAME AS themeName
+     FROM THEME WHERE THEMENO = #{themeNo}
+     </select>
+     
+     
+      <select id="getList" resultType="com.hnb.theme.ThemeVO">
+     SELECT 
+     THEMENO AS themeNo,
+     THEMENAME AS themeName
+     FROM (SELECT ROWNUM AS seq, m* FROM THEME m)
+     WHERE seq BETWEEN #{start} AND #{end}
+     </select>
+ </mapper>
