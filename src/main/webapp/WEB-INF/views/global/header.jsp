@@ -66,7 +66,9 @@
 <script type="text/javascript">
 	$(function() {
 		var $home = $('#home');
+		
 		var $board = $('#board_btn');
+		
 		var $movie = $('#movie_btn');
 		var $ticket = $('#ticket_btn');
 		var $admin = $('#admin_btn');
@@ -78,10 +80,14 @@
 		var $adminHome = $('#admin_home');
 		var $adminMember = $('#admin_member');
 		var $adminMovie = $('#admin_movie');
+		
 		global.load($home,$mainView,context+"/");
+		
 		global.load($ticket,$mainView,context+"/ticket/Ticket.do");
 		global.load($mypage,$mainView,context+"/member/mypage");
+		
 		global.move($board, context+"/event/boardList");
+		
 		global.move($admin, context+"/admin/main");
 		$movie.click(function() {Movie.home(context);});
 		$join.click(function() {Member.join(context);});
