@@ -20,4 +20,10 @@ public class CommandFactory {
 		return new Command(pageNo);
 	}
 	
+	
+	public static Command boardList(String pageNo,String themeNo){
+		logger.info("CommandFactory : 페이지넘버 ={}",pageNo);
+		return new Command(pageNo,themeNo);
+		
+	}
 }

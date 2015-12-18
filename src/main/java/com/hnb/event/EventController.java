@@ -31,26 +31,6 @@ public class EventController {
 	MemberVO membervo;
 	@Autowired
 	ArticleVO article;
-	@Autowired
-	ArticleServiceImpl articleService;
-
-	// RESTful 방식 (url에 {}이 있어서 @pathvariable 사용한 경우)
-	@RequestMapping("/boardList/{pageNo}")
-	public @ResponseBody List<ArticleVO> boardList(
-			@PathVariable("pageNo") String pageNo, Model model) {
-		logger.info("EventController : boardList 들어감");
-		logger.info("넘어온 페이지번호 : {}", pageNo);
-		List<ArticleVO>list = new ArrayList<ArticleVO>();
-		//List<ArticleVO> list = articleService.getList(CommandFactory.list(pageNo));
-		return list;
-	}
-
-	@RequestMapping("/boardList")
-	public String goList() {
-		logger.info("EventController : goList 들어감");
-		return "event/boardList.tiles";
-	}
-
 	
 	
 	

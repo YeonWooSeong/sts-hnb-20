@@ -23,6 +23,7 @@
 	 RCD_LEVEL AS rcdLevel,
 	 RCD_ORDER AS rcdOrder
 	FROM BOARD
+	WHERE THEME_NO = #{themeNo}
 	</select>
 
 <select id="searchByKeyword" resultType="com.hnb.article.ArticleVO" 

@@ -24,73 +24,104 @@ import com.hnb.movie.MovieVO;
 @RequestMapping("/admin")
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
-	@Autowired MemberServiceImpl memberService;
-	@Autowired MemberVO member;
-	@Autowired MovieVO movie;
-	@Autowired MovieServiceImpl movieService;
-	
-	
+
+	@Autowired
+	MemberServiceImpl memberService;
+	@Autowired
+	MemberVO member;
+	@Autowired
+	MovieVO movie;
+	@Autowired
+	MovieServiceImpl movieService;
+
 	@RequestMapping("/main")
-	public String home(){
+	public String home() {
 		logger.info("AdminController-home() 진입");
 		return "admin/admin/main.tiles";
 	}
+
 	@RequestMapping("/movie_list")
-	public Model movieList(Model model){
+	public Model movieList(Model model) {
 		logger.info("AdminController-movieList() 진입");
 		List<MovieVO> movieList;
 		movieList = movieService.getList();
-		model.addAttribute("movieList",movieList);
-		return model;}
-		
+		model.addAttribute("movieList", movieList);
+		return model;
+	}
+
 	@RequestMapping("/member_list/{pageNo}")
-	public @ResponseBody Map<String,Object> memberList(
-			@PathVariable("pageNo")String pageNo,
-			Model model){
-logger.info("adminController 들어감");
-logger.info("넘어온 페이지번호 : {}",pageNo);
-List<MemberVO> list = memberService.getList(CommandFactory.list(pageNo));
-model.addAttribute("memberList", list);
-model.addAttribute("count",memberService.count());
-Map<String,Object> map = new HashMap<String,Object>();
-map.put("list", list);
-map.put("count", memberService.count());
-map.put("pageNo", pageNo);
-return map;
+	public @ResponseBody Map<String, Object> memberList(@PathVariable("pageNo") String pageNo, Model model) {
+		logger.info("adminController 들어감");
+		logger.info("넘어온 페이지번호 : {}", pageNo);
+		List<MemberVO> list = memberService.getList(CommandFactory.list(pageNo));
+		model.addAttribute("memberList", list);
+		int pageSize = 5;
+		int groupSize = 3;
+		int count = memberService.count();
+		int pageNum = Integer.parseInt(pageNo);
+		int totPage = 0;
+
+		if (count % pageSize == 0) {
+			totPage = count / pageSize;
+		} else {
+			totPage = (count / pageSize) + 1;
 		}
-	
+		/* totPage = (count % pageSize ==0)?count/pageSize:count/pageSize; */
+
+		int startPage = pageNum - ((pageNum - 1) % groupSize);
+		int lastPage = 0;
+		if ((startPage + groupSize - 1) <= totPage) {
+			lastPage = (startPage + groupSize) - 1;
+		} else {
+			lastPage = totPage;
+		}
+		/*
+		 * lastPage = ((startPage+groupSize-1) <=totPage)?
+		 * (startPage+groupSize-1 :totPage);
+		 */
+
+		model.addAttribute("count", memberService.count());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("count", memberService.count());
+		map.put("pageNo", pageNo);
+		map.put("startPage", startPage);
+		map.put("groupSize", groupSize);
+		map.put("lastPage", lastPage);
+		map.put("totPage", totPage);
+
+		return map;
+	}
+
 	@RequestMapping("/member_profile")
-	public Model memberProfile(
-			String id,Model model
-			){
+	public Model memberProfile(String id, Model model) {
 		logger.info("개인 프로필 진입");
-		logger.info("가져온 아이디{}",id);
+		logger.info("가져온 아이디{}", id);
 		member = memberService.selectById(id);
 		model.addAttribute("member", member);
 		return model;
-		
+
 	}
+
 	@RequestMapping("/movie_profile")
-	public Model movieProfile(String filmNumber,Model model){
+	public Model movieProfile(String filmNumber, Model model) {
 		logger.info(" 영화 목록 진입");
-		logger.info(" 가져온 영화 번호{}",filmNumber);
+		logger.info(" 가져온 영화 번호{}", filmNumber);
 		movie = movieService.searchByName(filmNumber);
 		model.addAttribute("movie", movie);
-		
+
 		return model;
 	}
+
 	@RequestMapping("/insert")
-	public Model insert(
-		@RequestParam("id") String id,
-		@RequestParam("password") String password,
-		String email, String phone, String addr, Model model){
+	public Model insert(@RequestParam("id") String id, @RequestParam("password") String password, String email,
+			String phone, String addr, Model model) {
 		logger.info("insert 진입");
-		logger.info("id{}",id);
-		logger.info("password{}",password);
-		logger.info("email{}",email);
-		logger.info("phone{}",phone);
-		logger.info("addr{}",addr);
+		logger.info("id{}", id);
+		logger.info("password{}", password);
+		logger.info("email{}", email);
+		logger.info("phone{}", phone);
+		logger.info("addr{}", addr);
 		member = memberService.selectById(id);
 		member.setPassword(password);
 		member.setEmail(email);
@@ -100,23 +131,24 @@ return map;
 		model.addAttribute("result", id + " 님의 정보수정을 완료했습니다.");
 		return model;
 	}
+
 	@RequestMapping("/insert2")
-	public Model insert2(String filmName,String story,Model model){
+	public Model insert2(String filmName, String story, Model model) {
 		logger.info("인서트 진입");
-		logger.info("영화이름{}",filmName);
-		logger.info("줄거리{}",story);
+		logger.info("영화이름{}", filmName);
+		logger.info("줄거리{}", story);
 		movie = movieService.searchByName(filmName);
 		movie.setStory(story);
-		model.addAttribute("movie",movie);
-		
+		model.addAttribute("movie", movie);
+
 		return model;
 	}
+
 	@RequestMapping("/delete")
-	public Model delete(String id,Model model){
+	public Model delete(String id, Model model) {
 		memberService.remove(id);
-		model.addAttribute("result",id+"님의 탈퇴를 완료했습니다.");
+		model.addAttribute("result", id + "님의 탈퇴를 완료했습니다.");
 		return model;
 	}
-	
-	
+
 }
