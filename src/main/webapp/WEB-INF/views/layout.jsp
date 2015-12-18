@@ -24,7 +24,7 @@
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
-	<script src="${js}/global.js"></script>  
+<script src="${js}/global.js"></script>  
 <script src="${js}/member.js"></script>  
 <script src="${js}/movie.js"></script>  
 <script src="${js}/ticket.js"></script>  

@@ -39,12 +39,12 @@ $(function() {
 		+'<TD ALIGN=LEFT WIDTH=100>'
 		+'<IMG SRC="${img}/btn_new.gif" onClick="javascript:location.replace('BoardWrite.jsp')"; STYLE=CURSOR:HAND>'
 		+'</TD>'
-		+'<TD WIDTH=320 ALIGN=CENTER>'
+		+'<TD WIDTH=320 ALIGN=CENTER>';
 		+'<c:if test="${startPage-GROUPSIZE gt 0}">'
 		+'<a href="${context}/event/boardList/${startPage-GROUPSIZE}">'
 		+'<IMG SRC="${img}/btn_bf_page.gif">&nbsp;  '
 		+'</a>'
-		+'</c:if>'
+		+'</c:if>';
 		+'<c:forEach begin="${startPage}" end="${lastPage}" step="1" varStatus="status">'
 		+'<c:choose>'
 		+'<c:when test="${status.index == pageNo}">'
@@ -62,7 +62,7 @@ $(function() {
 		+'<IMG SRC="${img}/btn_nxt_page.gif">&nbsp;    '
 		+'</a>'
 		+'</c:if>'
-		+'</TD>'
+		+'</TD>';
 		+'<TD WIDTH=200 ALIGN=RIGHT>'
 		+'<FORM NAME="memberSearch"  action="${context}/event/memberSearch/1">'
 		+'<SELECT NAME="column" SIZE=1>'
@@ -76,7 +76,7 @@ $(function() {
 		+'</FORM>'
 		+'</TD>'
 		+'</TR>'
-		+'</TABLE>'
+		+'</TABLE>';
 		$('.mainView').empty();
 		$('.mainView').html(table);
 	});
