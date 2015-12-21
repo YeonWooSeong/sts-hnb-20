@@ -1,52 +1,32 @@
 <%@ page language='java' contentType='text/html; charset=UTF-8' pageEncoding='UTF-8'%>
 <LINK REL='stylesheet' type='text/css' href='${css}/board.css'/>	
-<script src="${js}/aa.js"></script>
 	
 	<style>
-	#btn_pop {padding:20px}
-#popup {
+	.white-popup {
   position: relative;
   background: #FFF;
-  padding: 40px;
+  padding: 20px;
   width: auto;
-  max-width: 400px;
+  max-width: 500px;
   margin: 20px auto;
-  text-align: center;
 }
 	</style>
-<div id="loginForm" class="white-popup-block mfp-hide" 
-style='width:300px; height : 500px; background-color: white; margin : 0 auto;'>
+<a href="#test-popup" class="open-popup-link">Show inline popup</a>
+<a href="mobile-friendly-page.html" data-mfp-src="#test-popup" class="open-popup-link">Show inline popup</a>	
 	
-	<%-- <jsp:include page="${context}/article/write"></jsp:include> --%>
-
+	
+	<div id="test-popup" class="white-popup mfp-hide">
+  Popup content
 </div>
-<div class="dropdown-menu" role="menu">
-            <a href="#loginForm" id="aaa" >팝업</a>
-          </div>
-<div class="clear"></div> 
-<div class="modal fade" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
-
 <script type='text/javascript'>
-	$(function() {
-		board.init('142','1');
+
+$(function() {
+	board.init('142','1');
+	  $('.open-popup-link').magnificPopup({
+		  type:'inline',
+		  midClick: true
+		  });
 	});
-	
 	var board = {
 		init : function(pageNo,themeNo) {
 			$.getJSON(context+'/article/list/'+pageNo+'/'+themeNo,function(data) {
