@@ -21,4 +21,8 @@ public interface TicketMapper {
 	public int delete(String filmNumber);
 
 	public List selectRoom(String theater, String room);
+
+	public List<?> getSeatList(String theater, String room);
+	
+	
 }

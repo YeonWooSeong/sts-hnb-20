@@ -1,10 +1,8 @@
-package com.hnb.mapper;
+package com.hnb.schedule;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-@Repository
-public interface ScheduleMapper {
+public interface ScheduleService {
 	public List<String> getRateList();
 	public List<String> getAscList();
 	public List<String> getTheaterList();
@@ -23,4 +21,5 @@ public interface ScheduleMapper {
 	public List<?> getTheaterListByD(String date);
 	public List<?> getTimeList(String movie, String theater, String date);
 	public String getFilmNumberBy(String movie);
+	
 }
